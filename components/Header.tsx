@@ -3,8 +3,11 @@ import { useContext } from 'react';
 import Link from 'next/link';
 
 const categories = [
-  { name: 'category 1', slug: 'cat1' },
-  { name: 'category 2', slug: 'cat2' },
+  { name: 'Day One', slug: 'dayone' },
+  { name: '../', slug: 'levelup' },
+
+  { name: 'About', slug: 'about' },
+  { name: 'Home', slug: 'home' },
 ];
 
 const Header: React.FC = () => {
