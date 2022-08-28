@@ -1,18 +1,10 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { PostCard, PostWidget, Categories } from '../components/index';
-const posts = [
-  {
-    title: 'article 1',
-    excerpt: 'Provide a concise learning path',
-  },
-  {
-    title: 'article 2',
-    excerpt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ',
-  },
-];
+import { getPosts } from '../services/index';
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ posts }) => {
+  console.log(posts);
   return (
     <div className="container mx-auto px-10 mb-8">
       <Head>
@@ -37,3 +29,10 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export async function getStaticProps() {
+  const posts = (await getPosts()) || [];
+  return {
+    props: { posts },
+  };
+}
