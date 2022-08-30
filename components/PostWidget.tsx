@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { getRecentPosts, getSimilarPosts } from '../services';
+import { CMSImageLoader } from '../util';
 
 const PostWidget = (props: { categories: []; slug: string }) => {
   const [relatedPosts, setRelatedPosts] = useState([]);
@@ -36,12 +37,12 @@ const PostWidget = (props: { categories: []; slug: string }) => {
         ) => (
           <div key={index} className="flex items-center w-full mb-4">
             <div className="w-16 flex-none">
-              <img
-                // loader={grpahCMSImageLoader}
+              <Image
+                unoptimized
+                loader={CMSImageLoader}
                 alt={post.title}
                 height="60px"
                 width="60px"
-                // unoptimized
                 className="align-middle rounded-full"
                 src={post.featuredImage.url}
               />
