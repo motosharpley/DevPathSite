@@ -2,8 +2,21 @@ import React from 'react';
 
 import moment from 'moment';
 
-const PostDetail = ({ post }) => {
-  const getContentFragment = (index, text, obj, type) => {
+type post = {
+  featuredImage: { url: string };
+  createdAt: string;
+  title: string;
+  author: { name: string; photo: { url: string } };
+  content: any;
+};
+
+const PostDetail = (post: post) => {
+  const getContentFragment = (
+    index: number,
+    text: any,
+    obj: any,
+    type: string
+  ) => {
     let modifiedText = text;
 
     if (obj) {
@@ -24,7 +37,7 @@ const PostDetail = ({ post }) => {
       case 'heading-three':
         return (
           <h3 key={index} className="text-xl font-semibold mb-4">
-            {modifiedText.map((item, i) => (
+            {modifiedText.map((item: string, i: number) => (
               <React.Fragment key={i}>{item}</React.Fragment>
             ))}
           </h3>
@@ -32,7 +45,7 @@ const PostDetail = ({ post }) => {
       case 'paragraph':
         return (
           <p key={index} className="mb-8">
-            {modifiedText.map((item, i) => (
+            {modifiedText.map((item: string, i: number) => (
               <React.Fragment key={i}>{item}</React.Fragment>
             ))}
           </p>
@@ -40,7 +53,7 @@ const PostDetail = ({ post }) => {
       case 'heading-four':
         return (
           <h4 key={index} className="text-md font-semibold mb-4">
-            {modifiedText.map((item, i) => (
+            {modifiedText.map((item: string, i: number) => (
               <React.Fragment key={i}>{item}</React.Fragment>
             ))}
           </h4>
@@ -105,9 +118,10 @@ const PostDetail = ({ post }) => {
             </div>
           </div>
           <h1 className="mb-8 text-3xl font-semibold">{post.title}</h1>
-          {post.content.raw.children.map((typeObj, index) => {
-            const children = typeObj.children.map((item, itemindex) =>
-              getContentFragment(itemindex, item.text, item)
+          {post.content.raw.children.map((typeObj: any, index: number) => {
+            const children = typeObj.children.map(
+              (item: any, itemindex: number) =>
+                getContentFragment(itemindex, item.text, item, typeObj)
             );
 
             return getContentFragment(index, children, typeObj, typeObj.type);
