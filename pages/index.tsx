@@ -3,8 +3,27 @@ import Head from 'next/head';
 import { PostCard, PostWidget, Categories } from '../components/index';
 import { getPosts } from '../services/index';
 
-const Home: NextPage = ({ posts }) => {
-  // console.log('posts: ', posts);
+const Home = (props: {
+  posts: [
+    {
+      node: {
+        author: {
+          bio: string;
+          id: string;
+          name: string;
+          photo: { url: string };
+        };
+        categories: [{ name: string; slug: string }];
+        createdAt: string;
+        excerpt: string;
+        featuredImage: { url: string };
+        slug: string;
+        title: string;
+      };
+    }
+  ];
+}) => {
+  // console.log('posts: ', props.posts);
   return (
     <div className="container mx-auto px-10 mb-8">
       <Head>
@@ -13,13 +32,13 @@ const Home: NextPage = ({ posts }) => {
       </Head>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div className="lg:col-span-8 col-span-1">
-          {posts.map((post) => (
+          {props.posts.map((post) => (
             <PostCard post={post.node} key={post.node.title} />
           ))}
         </div>
         <div className="lg:col-span-4 col-span-1">
           <div className="lg:sticky relative top-8">
-            <PostWidget />
+            <PostWidget categories={[]} slug="" />
             <Categories />
           </div>
         </div>
