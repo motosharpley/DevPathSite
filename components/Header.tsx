@@ -1,16 +1,21 @@
-import { useContext } from 'react';
-
+import { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
+import { getCategories } from '../services';
 
-const categories = [
-  { name: 'Day One', slug: 'dayone' },
-  { name: '../', slug: 'levelup' },
-
-  { name: 'About', slug: 'about' },
-  { name: 'Home', slug: 'home' },
-];
+type categoriesArr = {
+  name: string;
+  slug: string;
+};
 
 const Header: React.FC = () => {
+  const [categories, setCategories] = useState<categoriesArr[]>([]);
+
+  useEffect(() => {
+    getCategories().then((newCategories) => {
+      setCategories(newCategories);
+    });
+  }, []);
+
   return (
     <div className="container mx-auto px-10 mb-8">
       <div className="border-b w-full inline-block  border-blue-400 py-8">
