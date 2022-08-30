@@ -4,11 +4,11 @@ import parse from 'html-react-parser';
 
 import { getComments } from '../services';
 
-const Comments = (slug: string) => {
+const Comments = (props: { slug: string }) => {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    getComments(slug).then((result) => {
+    getComments(props.slug).then((result) => {
       setComments(result);
     });
   }, []);
