@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { submitComment } from '../services';
 
-const CommentsForm = (slug: string) => {
+const CommentsForm = (props: { slug: string }) => {
   const [error, setError] = useState(false);
   const [localStorage, setLocalStorage] = useState<Storage>();
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -50,7 +50,7 @@ const CommentsForm = (slug: string) => {
       name,
       email,
       comment,
-      slug,
+      slug: props.slug,
     };
 
     if (storeData) {
