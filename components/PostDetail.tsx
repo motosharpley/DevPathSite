@@ -10,7 +10,7 @@ type post = {
   content: any;
 };
 
-const PostDetail = (post: post) => {
+const PostDetail = (props: { post: post }) => {
   const getContentFragment = (
     index: number,
     text: any,
@@ -78,7 +78,7 @@ const PostDetail = (post: post) => {
       <div className="bg-white shadow-lg rounded-lg lg:p-8 pb-12 mb-8">
         <div className="relative overflow-hidden shadow-md mb-6">
           <img
-            src={post.featuredImage.url}
+            src={props.post.featuredImage.url}
             alt=""
             className="object-top h-full w-full object-cover  shadow-lg rounded-t-lg lg:rounded-lg"
           />
@@ -87,14 +87,14 @@ const PostDetail = (post: post) => {
           <div className="flex items-center mb-8 w-full">
             <div className="hidden md:flex items-center justify-center lg:mb-0 lg:w-auto mr-8 items-center">
               <img
-                alt={post.author.name}
+                alt={props.post.author.name}
                 height="30px"
                 width="30px"
                 className="align-middle rounded-full"
-                src={post.author.photo.url}
+                src={props.post.author.photo.url}
               />
               <p className="inline align-middle text-gray-700 ml-2 font-medium text-lg">
-                {post.author.name}
+                {props.post.author.name}
               </p>
             </div>
             <div className="font-medium text-gray-700">
@@ -113,19 +113,21 @@ const PostDetail = (post: post) => {
                 />
               </svg>
               <span className="align-middle">
-                {moment(post.createdAt).format('MMM DD, YYYY')}
+                {moment(props.post.createdAt).format('MMM DD, YYYY')}
               </span>
             </div>
           </div>
-          <h1 className="mb-8 text-3xl font-semibold">{post.title}</h1>
-          {post.content.raw.children.map((typeObj: any, index: number) => {
-            const children = typeObj.children.map(
-              (item: any, itemindex: number) =>
-                getContentFragment(itemindex, item.text, item, typeObj)
-            );
+          <h1 className="mb-8 text-3xl font-semibold">{props.post.title}</h1>
+          {props.post.content.raw.children.map(
+            (typeObj: any, index: number) => {
+              const children = typeObj.children.map(
+                (item: any, itemindex: number) =>
+                  getContentFragment(itemindex, item.text, item, typeObj)
+              );
 
-            return getContentFragment(index, children, typeObj, typeObj.type);
-          })}
+              return getContentFragment(index, children, typeObj, typeObj.type);
+            }
+          )}
         </div>
       </div>
     </>
