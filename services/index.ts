@@ -145,7 +145,7 @@ export const getComments = async (slug: string) => {
   return result.comments;
 };
 
-export const submitComment = async (obj) => {
+export const submitComment = async (obj: {}) => {
   const result = await fetch('/api/comments', {
     method: 'POST',
     headers: {

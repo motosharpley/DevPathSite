@@ -1,4 +1,5 @@
 import { GraphQLClient, gql } from 'graphql-request';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 const graphqlAPI = process.env.NEXT_PUBLIC_HYGRAPHCMS_ENDPOINT;
 
@@ -8,7 +9,10 @@ const graphqlAPI = process.env.NEXT_PUBLIC_HYGRAPHCMS_ENDPOINT;
  *************************************************************** */
 
 // export a default function for API route to work
-export default async function asynchandler(req, res) {
+export default async function asynchandler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const graphQLClient = new GraphQLClient(graphqlAPI!, {
     headers: {
       authorization: `Bearer ${process.env.GRAPHCMS_TOKEN}`,
