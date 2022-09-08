@@ -16,11 +16,11 @@ body {
     height: 100vh;
     //background: linear-gradient(to right bottom, #6d327c, #485DA6, #00a1ba, #01b18e, #32b37b);
     // background: #D3D3D3;
-    background-image: url('../public/blue-path-bg.jpg');
+    background-image: url('../public/ltgrn-path-bg.png');
     position: fixed;
     left: 0;
     top: 0;
-    z-index: -1;
+    z-index: -2;
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -60,4 +60,14 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+#bgVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  // background-attachment: fixed;
 }

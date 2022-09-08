@@ -30,6 +30,9 @@ const Home = (props: {
         <title>DevPath.tech</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <video autoPlay muted loop id="bgVideo">
+        <source src="./purple-fly-through.mp4" type="video/mp4" />
+      </video>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div className="lg:col-span-8 col-span-1">
           {props.posts.map((post) => (
