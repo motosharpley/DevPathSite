@@ -18,7 +18,7 @@ const Header: React.FC = () => {
 
   return (
     <div className="container mx-auto px-10 mb-8">
-      <div className="border-b w-full inline-block  border-blue-400 py-8">
+      <div className="border-b w-full inline-block  border-green-400 py-8">
         <div className="md:float-left block">
           <Link href="/">
             <img
@@ -38,12 +38,12 @@ const Header: React.FC = () => {
             </Link>
           ))}
           <div className="md:float-right pt-2">
-            <Link href="/https://www.youtube.com/channel/UCpprazufqp6UCSqwCv2ua6g">
+            <a href="https://www.youtube.com/channel/UCpprazufqp6UCSqwCv2ua6g">
               <img
                 src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white"
                 alt="DevPath YouTube Channel Button"
               />
-            </Link>
+            </a>
           </div>
         </div>
       </div>
