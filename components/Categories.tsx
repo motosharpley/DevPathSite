@@ -19,7 +19,15 @@ const Categories = () => {
 
   return (
     <div className="bg-white shadow-lg rounded-lg p-8 pb-12 mb-8">
-      <h3 className="text-xl mb-8 font-semibold border-b pb-4">Categories</h3>
+      <h3 className="text-xl mb-4 font-semibold border-b pb-4">Categories</h3>
+      <div className="mb-4">
+        <Link href="/https://www.youtube.com/channel/UCpprazufqp6UCSqwCv2ua6g">
+          <img
+            src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white"
+            alt="DevPath YouTube Channel Button"
+          />
+        </Link>
+      </div>
 
       {categories &&
         categories.map(

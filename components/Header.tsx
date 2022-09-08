@@ -28,6 +28,7 @@ const Header: React.FC = () => {
             />
           </Link>
         </div>
+
         <div className="hidden md:float-left md:contents">
           {categories.map((category) => (
             <Link key={category.slug} href={`/category/${category.slug}`}>
@@ -36,6 +37,14 @@ const Header: React.FC = () => {
               </span>
             </Link>
           ))}
+          <div className="md:float-right pt-2">
+            <Link href="/https://www.youtube.com/channel/UCpprazufqp6UCSqwCv2ua6g">
+              <img
+                src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white"
+                alt="DevPath YouTube Channel Button"
+              />
+            </Link>
+          </div>
         </div>
       </div>
     </div>
